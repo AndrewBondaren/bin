@@ -1,0 +1,17 @@
+#!/bin/bash
+USER=$6
+COMAND1=$1
+COMAND2=$2
+COMAND3=$3
+COMAND4=$4
+COMAND5=$5
+if [ "$USER" = "" ]
+  then
+    USER=bondarenko
+    echo USER=$USER
+fi
+
+export KUBECONFIG=~/minikube/$USER/config
+echo kubectl logs $COMAND1 $COMAND2 $COMAND3 $COMAND4 $COMAND5
+kubectl logs $COMAND1 $COMAND2 $COMAND3 $COMAND4 $COMAND5
+echo done

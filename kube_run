@@ -1,0 +1,26 @@
+#!/bin/bash
+NS="default"
+REPOSITORY=/home/abondarenko/k8s-helm/
+
+SERVICES=$1
+USER=$3
+TASK=$2
+
+if [ "$USER" != "" ]
+  then
+    echo USER
+    export KUBECONFIG=~/minikube/$USER/config
+fi
+if [ "$USER" = "" ]
+  then
+    USER=bondarenko
+    echo $USER=USER
+    export KUBECONFIG=~/minikube/$USER/config
+fi
+
+cd $REPOSITORY
+echo $REPOSITORY
+
+echo devserver/bin/deploy.sh $NS "$SERVICES" $USER $TASK run
+devserver/bin/deploy.sh $NS "$SERVICES" $USER $TASK run
+echo done
