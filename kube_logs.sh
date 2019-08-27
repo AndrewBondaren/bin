@@ -50,6 +50,7 @@ if [ -z "$USER" ];
     copyLogs
  else
     echo USER=$USER
+    export KUBECONFIG=~/minikube/$USER/config
     checkDir
     copyLogs
 fi
