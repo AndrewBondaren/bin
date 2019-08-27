@@ -1,12 +1,14 @@
 #!/bin/bash
 POD=$1
 USER=$2
-LOGDIR="~/logs"
+HOME=echo whoami
+LOGDIR="$HOME/logs"
 
 function checkDir () { 
- if [ -d "$LOGDIR" ];
-  then 
-   mkdir $LOGDIR
+ cd $LOGDIR
+ if [ $? -ne 0 ]
+  then
+    mkdir $LOGDIR
  fi
 }
 
@@ -28,13 +30,14 @@ function copyLogs () {
 }
 function manageDir() {
  local DIR="$LOGDIR/$POD"
- if [ ! -d "$DIR" ];
+ cd $DIT
+ if [ $? -ne 0 ]
   then
-   echo $DIR
-   rm -r $DIR
-  else
-   echo $DIR
    mkdir $DIR
+   echo makedir
+  else
+   rm -r $DIR
+   echo remove
  fi
 }
 
