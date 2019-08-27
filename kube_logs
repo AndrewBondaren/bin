@@ -1,17 +1,49 @@
-#!/bin/bash
-USER=$6
-COMAND1=$1
-COMAND2=$2
-COMAND3=$3
-COMAND4=$4
-COMAND5=$5
-if [ "$USER" = "" ]
+POD=$1
+USER=$2
+
+function checkDir () { 
+ if [ ! -d "~/logs" ];
+  then 
+   mkdir ~/logs
+ fi
+}
+
+function copyFromMonolith () {
+ checkDir
+ manageDir
+ kubectl cp default/$(kube_pods $USER | grep $POD | awk '{print $1}'):/home/carprice/logs ~/logs/$POD/
+}
+function copyFromPod () {
+ checkDir  
+ manageDir
+ kubectl cp default/$(kube_pods $USER | grep $POD | awk '{print $1}'):/home/carprice/source/storage/logs ~/logs/$POD/
+}
+function copyLogs () {
+ if [ "$POD" = "monolith ];
+  then 
+   copyFromMonolith
+  else 
+   copyFromPod
+ fi
+}
+function manageDir() {
+ local dir="~/logs/$POD"
+ if [ -d "$dir" ];
   then
-    USER=bondarenko
+   echo "Directory $dir exists"
+  else
+   echo "Directory $dir  DOES NOT exists."
+ fi
+}
+
+
+if [ -z "$USER" ];
+ then
+    $USER=bondarenko 
     echo USER=$USER
+    copyLogs
+ else
+    echo USER=$USER
+    copyLogs
 fi
 
-export KUBECONFIG=~/minikube/$USER/config
-echo kubectl logs $COMAND1 $COMAND2 $COMAND3 $COMAND4 $COMAND5
-kubectl logs $COMAND1 $COMAND2 $COMAND3 $COMAND4 $COMAND5
-echo done
