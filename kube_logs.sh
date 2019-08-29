@@ -3,12 +3,14 @@ POD=$1
 USER=$2
 HOME=echo whoami
 LOGDIR="$HOME/logs"
+DIR="/logs"
 
 function checkDir () { 
  cd $LOGDIR
  if [ $? -ne 0 ]
   then
     mkdir $LOGDIR
+    echo "make dir $LOGDIR"
  fi
 }
 
@@ -29,15 +31,16 @@ function copyLogs () {
  fi
 }
 function manageDir() {
- local DIR="$LOGDIR/$POD"
- cd $DIT
+ DIR="$LOGDIR/$POD"
+ cd $DIR
  if [ $? -ne 0 ]
   then
    mkdir $DIR
-   echo makedir
+   echo "make dir $DIR"
   else
+   cd $LOGDIR
    rm -r $DIR
-   echo remove
+   echo "remove $DIR"
  fi
 }
 
