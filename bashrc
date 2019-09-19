@@ -1,43 +1,38 @@
 #custom scripts 
 #add to ~/.bashrc 
-kcdesc() { 
-	kube_desc.sh "$1" "$2" 
+kcdesc() {
+        kube_desc.sh "$1" "$2"
 }
 
-kclogs() { 
-	kube_logs.sh "$1" "$2" 
+kclogs() {
+        kube_logs.sh "$1" "$2"
 }
 
-ttl() { 
-	ttl.sh 
+kcpods() {
+        kube_pods.sh "$1" "$2"
 }
 
-kcfix() { 
-	kube_mono_fix.sh 
+ttl() {
+        ttl.sh
 }
 
-mkuser() { 
-	make_user.sh 
+kcfix() {
+        kube_mono_fix.sh
 }
 
-vpn() { 
-	vpn.sh 
+mkuser() {
+        make_user.sh
+}
+
+vpn() {
+        vpn.sh
 }
 
 kcdelete() {
-	 kube_delete.sh "$1" "$2" 
+         kube_delete.sh "$1" "$2"
 }
 
 kcexec() {
-	kube_exec.sh "$1" "$2" 
+        kube_exec.sh "$1" "$2"
 }
-
-kcrun() { 
-	kube_run.sh "$1" "$2" 
-}
-
-hosts() { 
-	hosts.sh 
-}
-
 
