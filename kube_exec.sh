@@ -6,8 +6,11 @@ function exec () {
  if [ "$POD" = "monolith" ]
   then
    kubectl exec -it $(kube_pods.sh $USER | grep $POD | awk '{print $1}') -c php -- bash
-  else
-   kubectl exec -it $(kube_pods.sh $USER | grep $POD | awk '{print $1}') -c fpm -- bash
+  elif [ "$POD" = "billing" ]
+    then
+     kubectl exec -it $(kube_pods.sh $USER | grep $POD | awk '{print $1}') -- bash
+    else 
+     kubectl exec -it $(kube_pods.sh $USER | grep $POD | awk '{print $1}') -c fpm -- bash
  fi 
 }
 
