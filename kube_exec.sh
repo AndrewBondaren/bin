@@ -16,7 +16,7 @@ function exec () {
 
 if [ -z "$USER" ];
   then
-    USER=bondarenko
+    USER=$KUBEUSER
     echo USER=$USER
     exec
   else 
