@@ -47,7 +47,7 @@ function manageDir() {
 
 if [ -z "$USER" ];
  then
-    USER="bondarenko"
+    USER=$KUBEUSER
     echo USER=$USER
     checkDir
     copyLogs

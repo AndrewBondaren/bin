@@ -2,7 +2,7 @@
 USER=$1
 if [ -z "$USER" ]
   then
-    USER="bondarenko"
+    USER=$KUBEUSER
     echo USER=$USER
 fi
 

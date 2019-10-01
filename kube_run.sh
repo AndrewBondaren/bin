@@ -8,7 +8,7 @@ TASK=$2
 
 if [ -z "$USER" ];
   then
-    USER="bondarenko"
+    USER=$KUBEUSER
     echo USER=$USER
     export KUBECONFIG=~/minikube/$USER/config
   else 

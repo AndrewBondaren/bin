@@ -1,5 +1,10 @@
 #custom scripts 
-#add to ~/.bashrc 
+#add to ~/.bashrc
+#then restart
+
+#set kubectl user variable
+export KUBEUSER="youruser"
+ 
 kcdesc() {
         kube_desc.sh "$1" "$2"
 }

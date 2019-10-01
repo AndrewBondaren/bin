@@ -3,7 +3,7 @@ POD=$1
 USER=$2
 if [ -z "$USER" ]
   then
-    USER=bondarenko
+    USER=$KUBEUSER
     echo USER=$USER
 fi
 if [ "$POD" = "" ]
