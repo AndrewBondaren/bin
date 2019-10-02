@@ -10,10 +10,13 @@ kcdesc() {
         kube_desc.sh "$1" "$2"
 }
 
-kclogs() {
+kclog() {
         kube_logs.sh "$1" "$2"
 }
 
+kcgetlog() {
+	kube_get_logs.sh "$1" "$2"
+}
 kcpods() {
         kube_pods.sh "$1" "$2"
 }
