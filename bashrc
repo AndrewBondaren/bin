@@ -1,6 +1,7 @@
 #custom scripts 
 #add to ~/.bashrc
 #then restart
+PATH=$PATH:~/bin
 
 #set kubectl user variable
 export KUBEUSER="youruser"
