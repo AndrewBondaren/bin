@@ -34,7 +34,7 @@ mkuser() {
 }
 
 vpn() {
-        vpn.sh
+        vpn.sh "$1"
 }
 
 kcdelete() {
