@@ -21,4 +21,5 @@ echo $REPOSITORY
 
 echo devserver/bin/deploy.sh $NS "$SERVICES" $USER $TASK run
 devserver/bin/deploy.sh $NS "$SERVICES" $USER $TASK run
-echo done
+until [ $(kubectl get pods | grep -v STATUS | grep -v Running | wc -l) -eq 0 ];do sleep 15; done
+echo $SERVICES is running
