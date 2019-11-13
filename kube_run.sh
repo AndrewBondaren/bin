@@ -1,6 +1,6 @@
 #!/bin/bash
 NS="default"
-REPOSITORY=~/k8s-helm/
+REPOSITORY=$(echo $K8SREPOSITORY)
 
 SERVICES=$1
 USER=$3
@@ -16,8 +16,15 @@ if [ -z "$USER" ];
     export KUBECONFIG=~/minikube/$USER/config
 fi
 
+
 cd $REPOSITORY
 echo $REPOSITORY
+
+#TODO
+if [ $TASK="monolith" ];
+ then 
+  make_tasks.sh $TASK $REPOSITORY
+fi
 
 echo devserver/bin/deploy.sh $NS "$SERVICES" $USER $TASK run
 devserver/bin/deploy.sh $NS "$SERVICES" $USER $TASK run
