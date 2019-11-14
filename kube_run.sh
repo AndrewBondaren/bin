@@ -21,13 +21,22 @@ cd $REPOSITORY
 echo $REPOSITORY
 
 #TODO
-if [ $TASK="monolith" ];
- then 
-  make_tasks.sh $TASK $REPOSITORY
+#if [ $TASK=monolith" ];
+# then
+
+rm $REPOSITORY/devserver/tasks/$TASK.yaml
+if [ $? -ne 0 ];
+  then
+    echo "old yaml file is deleted"
+  else
+    echo "new yaml file will be created"
 fi
+for i in $SERVICES; do
+  make_tasks.sh $TASK $REPOSITORY $SERVICES
+done;
+#fi
 
 echo devserver/bin/deploy.sh $NS "$SERVICES" $USER $TASK run
 devserver/bin/deploy.sh $NS "$SERVICES" $USER $TASK run
 until [ $(kubectl get pods | grep -v STATUS | grep -v Running | wc -l) -eq 0 ];do sleep 15; done
 echo $SERVICES running
-

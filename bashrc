@@ -6,7 +6,7 @@ PATH=$PATH:~/bin
 #set kubectl user variable
 export KUBEUSER="youruser"
 #set k8s directory
-export K8SREPOSITORY=~/k8s-helm/
+export K8SREPOSITORY=~/k8s-helm
  
 kcdesc() {
         kube_desc.sh "$1" "$2"
