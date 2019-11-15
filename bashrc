@@ -47,3 +47,6 @@ kcexec() {
         kube_exec.sh "$1" "$2"
 }
 
+kcrun() {
+	kube_run.sh "$1" "$2" "$3"
+}
