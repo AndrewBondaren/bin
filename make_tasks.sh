@@ -37,7 +37,7 @@ if [ $SERVICES == papi-dev ];
   then
     echo "papi_dev:" >> $TASK.yaml
     echo "  fpm_image: \"nexus.carprice.ru/papi/fpm:$TASK\"" >> $TASK.yaml
-    echo "  nginx_image: \"nexus.carprice.ru/papi/nginx::$TASK\"" >> $TASK.yaml
+    echo "  nginx_image: \"nexus.carprice.ru/papi/nginx:$TASK\"" >> $TASK.yaml
     echo ""
     echo $TASK.yaml
     cat $TASK.yaml
