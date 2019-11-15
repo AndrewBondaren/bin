@@ -43,5 +43,16 @@ if [ $SERVICES == papi-dev ];
     cat $TASK.yaml
     echo ""
 fi
-
+if [ $SERVICES == services ];
+  then
+    echo "services:" >> $TASK.yaml
+    echo "  image: \"nexus.carprice.ru/go/services:$TASK\"" >> $TASK.yaml
+    echo "  yandex:" >> $TASK.yaml
+    #TODO
+    echo "    poll_worker_enabled: true" >> $TASK.yaml
+    echo ""
+    echo $TASK.yaml
+    cat $TASK.yaml
+    echo ""
+fi
 
