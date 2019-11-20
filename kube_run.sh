@@ -26,8 +26,6 @@ if [ $TASK != empty ]
     if [ $? -ne 0 ];
       then
         echo "old yaml file is deleted"
-      else
-        echo "new yaml file will be created"
     fi
      for i in $SERVICES; do
        make_tasks.sh $TASK $REPOSITORY $SERVICES
