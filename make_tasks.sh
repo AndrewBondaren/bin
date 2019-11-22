@@ -24,20 +24,12 @@ if [ $SERVICES == admin-documents-front ];
     cat $TASK.yaml
     echo ""
 fi
-if [ $SERVICES == admin-documents-front ];
-  then
-    echo "admin_documents_front:" >> $TASK.yaml
-    echo "  nginx_image: \"nexus.carprice.ru/admin-documents-front:$TASK\"" >> $TASK.yaml
-    echo ""
-    echo $TASK.yaml
-    cat $TASK.yaml
-    echo ""
-fi
 if [ $SERVICES == bpm-exchanger ];
   then
-    echo "bpm_exchanger:" >> $TASK.yaml
+    echo "bpm-exchanger:" >> $TASK.yaml
     echo "  fpm_image: \"nexus.carprice.ru/bpm-exchanger/php:$TASK\"" >> $TASK.yaml
     echo "  nginx_image: \"nexus.carprice.ru/bpm-exchanger/nginx:$TASK\"" >> $TASK.yaml
+    echo "  cron_image: \"nexus.carprice.ru/bpm-exchanger/cron:$TASK\"" >> $TASK.yaml
     echo ""
     echo $TASK.yaml
     cat $TASK.yaml
