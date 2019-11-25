@@ -14,10 +14,10 @@ fi
 
 if [ $POD == services ];
   then
-    kubectl logs -f $(kube_pods.sh $USER | grep $POD | awk '{print $1}')
+    kubectl logs $(kube_pods.sh $USER | grep $POD | awk '{print $1}')
 elif [ $POD == monolith ];
-  then 
-   kubectl logs -f $(kube_pods.sh $USER | grep $POD | awk '{print $1}') -c php
-  else 
-   kubectl logs -f $(kube_pods.sh $USER | grep $POD | awk '{print $1}') -c fpm
+  then
+   kubectl logs $(kube_pods.sh $USER | grep $POD | awk '{print $1}') -c php
+  else
+   kubectl logs $(kube_pods.sh $USER | grep $POD | awk '{print $1}') -c fpm
 fi
