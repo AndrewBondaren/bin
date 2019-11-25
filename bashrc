@@ -53,3 +53,6 @@ kcrun() {
 kcrundef() {
 	kube_run_def.sh "$1" "$2" "$3"
 }
+kclogsave() {
+	kube_logs_save.sh "$1" "$2"
+}
