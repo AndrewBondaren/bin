@@ -1,7 +1,13 @@
 #!/bin/bash
 POD=$1
 USER=$2
- 
+
+if [ "$POD" = "" ]
+  then
+    echo "Empty pod!"
+    exit 3
+fi
+
 function exec () {
  if [ "$POD" = "monolith" ]
   then
@@ -25,7 +31,7 @@ if [ -z "$USER" ];
     exec
   else
     echo USER=$USER
-    export KUBECONFIG=~/minikube/$USER/config
+    export KUBECONFIG=$CONFREP/$USER/config
     exec
 fi
 

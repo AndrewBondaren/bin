@@ -5,6 +5,12 @@ HOME=echo whoami
 LOGDIR="$HOME/logs"
 DIR="/logs"
 
+if [ "$POD" = "" ]
+  then
+    echo "Empty pod!"
+    exit 3
+fi
+
 function checkDir () { 
  cd $LOGDIR
  if [ $? -ne 0 ]
@@ -53,7 +59,7 @@ if [ -z "$USER" ];
     copyLogs
  else
     echo USER=$USER
-    export KUBECONFIG=~/minikube/$USER/config
+    export KUBECONFIG=$CONFREP/$USER/config
     checkDir
     copyLogs
 fi

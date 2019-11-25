@@ -2,14 +2,21 @@
 POD=$1
 USER=$2
 
+if [ "$POD" = "" ]
+  then
+    echo "Empty pod!"
+    exit 3
+fi
+
+
 if [ -z "$USER" ];
   then
     USER=$KUBEUSER
     echo USER=$USER
-    export KUBECONFIG=~/minikube/$USER/config
+    export KUBECONFIG=$CONFREP/$USER/config
   else
     echo USER=$USER
-    export KUBECONFIG=~/minikube/$USER/config
+    export KUBECONFIG=$CONFREP/$USER/config
 fi
 
 if [ $POD == services ];

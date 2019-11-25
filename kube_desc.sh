@@ -9,10 +9,10 @@ fi
 if [ "$POD" = "" ]
   then
     echo "Empty pod!"
-    exit 1
+    exit 3
 fi
 
-export KUBECONFIG=~/minikube/$USER/config
+export KUBECONFIG=$CONFREP/$USER/config
 kubectl describe pods $(kube_pods.sh $USER | grep $POD | awk '{print $1}')
 echo done
 

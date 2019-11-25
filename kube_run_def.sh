@@ -5,14 +5,20 @@ SERVICES=$1
 TASK=$2
 USER=$3
 
+if [ -z "$1" ] || [ -z "$2" ]
+  then
+    echo 'No task or service!'
+    exit 3
+fi
+
 if [ -z "$USER" ];
   then
     USER=$KUBEUSER
     echo USER=$USER
-    export KUBECONFIG=~/minikube/$USER/config
+    export KUBECONFIG=$CONFREP/$USER/config
   else
     echo USER=$USER
-    export KUBECONFIG=~/minikube/$USER/config
+    export KUBECONFIG=$CONFREP/$USER/config
 fi
 
 

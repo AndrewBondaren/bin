@@ -6,8 +6,13 @@ if [ -z "$USER" ]
     USER=$KUBEUSER
     echo USER=$USER
 fi
+if [ "$POD" = "" ]
+  then
+    echo "Empty pod!"
+    exit 3
+fi
 
-export KUBECONFIG=~/minikube/$USER/config
+export KUBECONFIG=$CONFREP/$USER/config
 echo kubectl delete pod $POD --grace-period=0 --force --namespace default
 kubectl delete pod $POD --grace-period=0 --force --namespace default
 echo done

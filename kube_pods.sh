@@ -6,6 +6,6 @@ if [ -z "$USER" ]
     echo USER=$USER
 fi
 
-export KUBECONFIG=~/minikube/$USER/config
+export KUBECONFIG=$CONFREP/$USER/config
 kubectl get pods
 echo done
