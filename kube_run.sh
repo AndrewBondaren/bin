@@ -27,8 +27,8 @@ if [ $TASK != empty ]
       then
         echo "old yaml file is deleted"
     fi
-     for i in $SERVICES; do
-       make_tasks.sh $TASK $REPOSITORY $SERVICES
+     for svc in $SERVICES; do
+       make_tasks.sh $TASK $REPOSITORY $svc
      done;
 fi
 
