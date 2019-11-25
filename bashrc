@@ -2,6 +2,7 @@ PATH=$PATH:~/bin
 export KUBEUSER="youruser"
 export K8SREPOSITORY=~/k8s-helm
 export CONFREP=~/minikube
+export KUBECONFIG=$CONFREP/$KUBEUSER/config
 
 mkuser() {
         make_user.sh $1
