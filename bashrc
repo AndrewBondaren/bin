@@ -8,7 +8,7 @@ export KUBEUSER="youruser"
 #set k8s directory
 export K8SREPOSITORY=~/k8s-helm
  
-kcdesc() {
+kcds() {
         kube_desc.sh "$1" "$2"
 }
 
@@ -16,7 +16,7 @@ kclog() {
         kube_logs.sh "$1" "$2"
 }
 
-kcgetlog() {
+kcglog() {
 	kube_get_logs.sh "$1" "$2"
 }
 kcpods() {
@@ -27,7 +27,7 @@ ttl() {
         ttl.sh
 }
 
-kcfix() {
+kcfx() {
         kube_mono_fix.sh
 }
 
@@ -39,20 +39,20 @@ vpn() {
         vpn.sh "$1"
 }
 
-kcdelete() {
+kcdel() {
          kube_delete.sh "$1" "$2"
 }
 
-kcexec() {
+kcex() {
         kube_exec.sh "$1" "$2"
 }
 
 kcrun() {
 	kube_run.sh "$1" "$2" "$3"
 }
-kcrundef() {
+kcrundf() {
 	kube_run_def.sh "$1" "$2" "$3"
 }
-kclogsave() {
+kclogsv() {
 	kube_logs_save.sh "$1" "$2"
 }
