@@ -26,10 +26,8 @@ if [ $SERVICES == admin-documents-front ];
 fi
 if [ $SERVICES == bpm-exchanger ];
   then
-    echo "bpm-exchanger:" >> $TASK.yaml
+    echo "bpm_exchanger:" >> $TASK.yaml
     echo "  fpm_image: \"nexus.carprice.ru/bpm-exchanger/php:$TASK\"" >> $TASK.yaml
-    echo "  nginx_image: \"nexus.carprice.ru/bpm-exchanger/nginx:$TASK\"" >> $TASK.yaml
-    echo "  cron_image: \"nexus.carprice.ru/bpm-exchanger/cron:$TASK\"" >> $TASK.yaml
     echo ""
     echo $TASK.yaml
     cat $TASK.yaml
