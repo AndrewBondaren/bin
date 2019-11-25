@@ -1,58 +1,128 @@
-#custom scripts 
-#add to ~/.bashrc
-#then restart
+#Custom scripts 
+#Add rows below to ~/.bashrc file
+#then restart system
 PATH=$PATH:~/bin
 
-#set kubectl user variable
+#Set kubectl user variable,
+#for example
+#export KUBEUSER="bondarenko"
 export KUBEUSER="youruser"
-#set k8s directory
+#Set k8s directory
 export K8SREPOSITORY=~/k8s-helm
- 
-kcds() {
-        kube_desc.sh "$1" "$2"
-}
 
-kclog() {
-        kube_logs.sh "$1" "$2"
-}
-
-kcglog() {
-	kube_get_logs.sh "$1" "$2"
-}
-kcpods() {
-        kube_pods.sh "$1" "$2"
-}
-
-ttl() {
-        ttl.sh
-}
-
-kcfx() {
-        kube_mono_fix.sh
-}
-
+#Make user for your KUBEUSER 
+#to run your pods correctly
 mkuser() {
         make_user.sh
 }
 
-vpn() {
-        vpn.sh "$1"
+#Get all pods
+# $1 - dev name, optional
+kcpods() {
+        kube_pods.sh "$1"
 }
 
+#Run pods with an automated task generation
+# $1 - pod names, for example
+# monolith or "monoith accounts"
+# $2 - task number
+# $3 - dev name, optional
+kcrun() {
+	kube_run.sh "$1" "$2" "$3"
+}
+
+#Run pods with a manual created task
+# $1 - pod names, for example
+# monolith or "monoith accounts"
+# $2 - task number 
+# $3 - dev name, optional 
+kcrundf() {
+	kube_run_def.sh "$1" "$2" "$3"
+}
+
+#Delete a pod
+# $1 - pod name
+# $2 - dev name, optional
 kcdel() {
          kube_delete.sh "$1" "$2"
 }
 
+#Describe a pod
+# $1 - pod name
+# $2 - dev name, optional 
+kcds() {
+        kube_desc.sh "$1" "$2"
+}
+
+#Get pod logs
+# $1 - pod name
+# $2 - dev name, optional
+kclog() {
+        kube_logs.sh "$1" "$2"
+}
+
+#Save pod logs to home directory
+# $1 - pod name
+# $2 - dev name, optional
+kclogsv() {
+	kube_logs_save.sh "$1" "$2"
+}
+
+#Tail logs to the console output
+# $1 - pod name
+# $2 - dev name, optional  
+kclogsf() {
+	kube_logs_f.sh "$1" "$2"
+}
+
+#Download all service logs to a directory
+# ~/logs/$POD/ dir
+# $1 - pod name
+# $2 - dev name, optional
+kcglog() {
+	kube_get_logs.sh "$1" "$2"
+}
+
+#Get shell to a running container
+# $1 - pod name
+# $2 - dev name, optional
 kcex() {
         kube_exec.sh "$1" "$2"
 }
 
-kcrun() {
-	kube_run.sh "$1" "$2" "$3"
+#Custom fix for the monolith
+kcfx() {
+        kube_mono_fix.sh
 }
-kcrundf() {
-	kube_run_def.sh "$1" "$2" "$3"
-}
-kclogsv() {
-	kube_logs_save.sh "$1" "$2"
-}
+
+#------------------------------------
+
+#These scripts are for personal use.
+#Uncomment them for thee can
+#hereby serve you
+
+#Custom script to set ttl=65 for ipv4
+#for Ubuntu 18.04 only!
+#ttl() {
+#        ttl.sh
+#}
+
+#VPN
+# 1) vpn with no arguments -  get current route
+# 2) vpn with arguments - coomands for openvpn
+# $1 - command for etc/init.d/openvpn
+#vpn() {
+#        vpn.sh "$1"
+#}
+
+#gc() {
+#	git commit -am
+#}
+
+#gs() {
+#	git status
+#}
+
+#ga() {
+#	git add
+#}
