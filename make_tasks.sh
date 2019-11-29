@@ -79,3 +79,13 @@ if [ $SERVICE == accounts ];
     cat $TASK.yaml
     echo ""
 fi
+if [ $SERVICE == waystatus ];
+  then
+    echo "waystatus:" >> $TASK.yaml
+    echo "  fpm_image: \"nexus.carprice.ru/waystatus/fpm:$TASK\"" >> $TASK.yaml
+    echo ""
+    echo $TASK.yaml
+    cat $TASK.yaml
+    echo ""
+fi
+
