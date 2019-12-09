@@ -88,4 +88,24 @@ if [ $SERVICE == waystatus ];
     cat $TASK.yaml
     echo ""
 fi
-
+if [ $SERVICE == client-api ];
+  then
+    echo "client_api:" >> $TASK.yaml
+    echo "  fpm_image: \"nexus.carprice.ru/client-api/fpm:$TASK\"" >> $TASK.yaml
+    echo ""
+    echo $TASK.yaml
+    cat $TASK.yaml
+    echo ""
+fi
+if [ $SERVICE == core-api ];
+  then
+    echo "core_api:" >> $TASK.yaml
+    echo "  fpm_image: \"nexus.carprice.ru/core-api/php-fpm:$TASK\"" >> $TASK.yaml
+    echo "  cron_image: \"nexus.carprice.ru/core-api/php-cron:$TASK\"" >> $TASK.yaml
+    echo "  nginx_image: \"nexus.carprice.ru/nginx:1.16.0\"" >> $TASK.yaml
+    echo "  redis_image: \"nexus.carprice.ru/redis:redis4\"" >> $TASK.yaml
+    echo ""
+    echo $TASK.yaml
+    cat $TASK.yaml
+    echo ""
+fi
