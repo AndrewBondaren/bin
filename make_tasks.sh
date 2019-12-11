@@ -109,3 +109,12 @@ if [ $SERVICE == core-api ];
     cat $TASK.yaml
     echo ""
 fi
+if [ $SERVICE == dealer-front-dev ];
+  then
+    echo "dealer_front_dev:" >> $TASK.yaml
+    echo "  image: \"nexus.carprice.ru/dealer-front:$TASK\"" >> $TASK.yaml
+    echo ""
+    echo $TASK.yaml
+    cat $TASK.yaml
+    echo ""
+fi
